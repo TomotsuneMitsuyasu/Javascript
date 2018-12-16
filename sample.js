@@ -8,27 +8,27 @@ $(document).ready(function(){
   function score_indicate(){
     // このような記述をすることで、subject_pointsという変数の中に
     // [国語の点数,英語の点数,数学の点数,理科の点数,社会の点数]という配列を作成できる。
-    const subject_points = [Number($('#national_language').val()),
+    const SUBJECT_POINTS = [Number($('#national_language').val()),
                           Number($('#english').val()),
                           Number($('#mathematics').val()),
                           Number($('#science').val()),
                           Number($('#society').val())
                           ];
   var sum = 0;
-  sum = subject_points[0];
-     sum += subject_points[1];
-     sum += subject_points[2];
-     sum += subject_points[3];
-     sum += subject_points[4];
+  sum = SUBJECT_POINTS[0];
+     sum += SUBJECT_POINTS[1];
+     sum += SUBJECT_POINTS[2];
+     sum += SUBJECT_POINTS[3];
+     sum += SUBJECT_POINTS[4];
     
 
     // さらにこのような記述をすることで、「合計点：」となっている右の部分に合計点が出力される
     $("#sum_indicate").text(sum);
     
-    ave = sum / subject_points.length
+    ave = sum / SUBJECT_POINTS.length
     var Kirisute = Math.floor(ave);
     $("#avarage_indicate").text(Kirisute);
-    // return subject_points;
+    return SUBJECT_POINTS;
     // ここに、上記を参考にして平均点を出力する処理を書き込む
   };
     
@@ -50,11 +50,11 @@ $(document).ready(function(){
 
   
   function get_pass_or_failure(){
-      let subject_points = score_indicate();
-      let number=subject_points.length
+      let subject_result = score_indicate();
+      let number=subject_result.length
       let judge= "合格";
       for(let i=0;i<number;i++){
-          if(subject_points[i] <60){
+          if(subject_result[i] <60){
               judge="不合格";
               break;
           }
